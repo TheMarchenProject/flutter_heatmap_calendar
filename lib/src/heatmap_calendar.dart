@@ -42,6 +42,9 @@ class HeatMapCalendar extends StatefulWidget {
   /// The text color value of week labels.
   final Color? weekTextColor;
 
+  /// The color value of the arrow icons, month and year.
+  final Color? topBarColor;
+
   /// Make block size flexible if value is true.
   ///
   /// Default value is false.
@@ -100,6 +103,7 @@ class HeatMapCalendar extends StatefulWidget {
     this.textColor,
     this.weekFontSize,
     this.weekTextColor,
+    this.topBarColor,
     this.borderRadius,
     this.flexible = false,
     this.margin,
@@ -145,9 +149,10 @@ class _HeatMapCalendar extends State<HeatMapCalendar> {
       children: <Widget>[
         // Previous month button.
         IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.arrow_back_ios,
             size: 14,
+            color: widget.topBarColor,
           ),
           onPressed: () => changeMonth(-1),
         ),
@@ -159,14 +164,16 @@ class _HeatMapCalendar extends State<HeatMapCalendar> {
               (_currentDate?.year).toString(),
           style: TextStyle(
             fontSize: widget.monthFontSize ?? 12,
+            color: widget.topBarColor,
           ),
         ),
 
         // Next month button.
         IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.arrow_forward_ios,
             size: 14,
+            color: widget.topBarColor,
           ),
           onPressed: () => changeMonth(1),
         ),
